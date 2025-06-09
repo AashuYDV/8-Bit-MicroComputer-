@@ -1,54 +1,49 @@
-# 8-Bit-MicroComputer
-This project was inspired by the efforts of Ben Eater to build an 8 bit computer on a breadboard. Even though this one was not built on a breadboard, it has the functionalities of his computer and modelled using Verilog HDL.
-This computer is based on the Von Neumann architechture (Same memory shared between program and data). The VerilogModules folder contains all the Verilog source codes to simulate the 8-bit computer and also the testbench file. The modules required for the computer are defined separately and then combined and interfaced in a common module named CPU.v . It also contains a testbench file named CPU_tb.v which is used to simulate the behaviour of the computer.
+# 8-Bit Von Neumann MicroComputer in Verilog
 
-The parent folder contains the Assembly language compiler in the form of a python script as well as a DemoProgram.asm file which is essentially a 16 byte executable assembly code. The compiler accepts the compilable text file as an argument in the compilation line and writes the binary sequence in a file named binary.txt .
+This project is a simple **8-bit microcomputer** built using **Verilog HDL**, based on the **Von Neumann architecture**, where both program instructions and data share the same memory space. It includes a custom **assembler written in Python** and a demo program to simulate and verify the computer's functionality.
 
-And the outputFiles folder contains the output obtained from the testing of the modules.
+---
 
-Using The Assembler
-In order to use the assembler, please use below mentioned syntax :
+## 🔧 Project Structure
 
-$ python Assembler_v2.py <input_filename_with_extension>
-Or,
+- **VerilogModules/**  
+  Contains all Verilog source files:
+  - `CPU.v`: Top-level module integrating all components
+  - `CPU_tb.v`: Testbench for simulation
+  - Other submodules (ALU, Control Unit, RAM, etc.)
 
-$ python3 Assembler_v2.py <input_filename_with_extension>
-And press Enter.
+- **Assembler_v2.py**  
+  A Python-based assembly language compiler that converts `.asm` files to binary (`binary.txt`) and auto-updates the RAM module.
 
-Now the RAM.v module in the VerilogModules folder will be updated with the new set of instructions. No need to copy paste anything into the RAM module.
+- **DemoProgram.asm**  
+  A 16-byte sample executable program written in custom assembly language.
 
-THIS METHOD IS RECOMMENDED!!
-System Requirements
-Make sure you have Python3 installed in your system.
+- **outputFiles/**  
+  Contains output files and waveform dumps from simulations.
 
-Make sure you have iverilog (abbreviation of Icarus Verilog) or Vivado synthesizer/simulator.
+---
 
-Recommended Way To Use
-Install iverilog (an open source verilog code synthesizer) from here https://bleyer.org/icarus/
+## 🚀 Getting Started
 
-Make sure you have GTKWave (an waveform analyzer tool) installed in your system.
+### 1. ✅ Requirements
 
-Make sure you have the latest version of make (to run the Makefile).
+Make sure you have the following installed:
+- **Python 3**
+- **Icarus Verilog (iverilog)** – [Install Guide](https://bleyer.org/icarus/)
+- **GTKWave** – Waveform viewer
+- **make** – To use the provided Makefile for easy build & simulation
 
-Now, just execute the following commands on cmd (for windows) or terminal (linux or mac):
+---
 
-$ make
-That's it!
+### 2. 🛠️ Assembling and Compiling
 
-This "make" command will now create and open the waveform for the Verilog module - CPU_tb.v and you will be able to see it in GTKWave.
+To compile a custom assembly program:
 
-If you are on Windows and the Makefile is not working for you, try the following:
+```bash
+$ python3 Assembler_v2.py <input_filename.asm>
+```
+---
+### Expected Output
 
-Open the cmd and 'cd' to the directory of the GitHub repository.
-
-Use the following commands:
-
-$ cd VerilogModules
-$ iverilog CPU_tb.v
-$ vvp a.out
-$ gtkwave dump.vcd
-Now the gtkwave program (also an open source waveform viewer) will display the output of the 8bit Computer in a new window.
-
-Expected Output
 A sample output (after running the assembly program from this repository) is shown below:
 
