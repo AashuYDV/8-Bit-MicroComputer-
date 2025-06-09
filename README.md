@@ -46,4 +46,5 @@ $ python3 Assembler_v2.py <input_filename.asm>
 ### Expected Output
 
 A sample output (after running the assembly program from this repository) is shown below:
+![Alt text](output.png)
 
